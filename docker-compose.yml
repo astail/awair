@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  awair:
+    image: astail/awair
+    depends_on:
+      - dbserver
+    environment:
+      auth: ${auth}
+      device_id: ${device_id}
+
+  dbserver:
+    image: mysql:5.7
+    volumes:
+       - "./mysql/data:/var/lib/mysql"
+       - "./mysql:/docker-entrypoint-initdb.d"
+    environment:
+      MYSQL_USER: "awair"
+      MYSQL_PASSWORD: "awairpass"
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+      MYSQL_DATABASE: "awair"
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
