@@ -2,7 +2,7 @@
 
 set -eu
 
-DATA=`curl --location --request GET 'https://developer-apis.awair.is/v1/users/self/devices/awair-r2/${device_id}/air-data/latest?fahrenheit=false' \
+DATA=`curl --location --request GET 'https://developer-apis.awair.is/v1/users/self/devices/awair-r2/'${device_id}'/air-data/latest?fahrenheit=false' \
 --header "Authorization: Bearer ${auth}"`
 
 valueget() {
